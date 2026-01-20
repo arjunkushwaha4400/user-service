@@ -24,10 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User get(@PathVariable Long id) {
-        return repo.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "User not found"));
+    public String get(@PathVariable Long id) {
+        return "hyy";
 
     }
 }
