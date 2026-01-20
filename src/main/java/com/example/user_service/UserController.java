@@ -1,7 +1,9 @@
 package com.example.user_service;
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/users")
@@ -24,7 +26,9 @@ public class UserController {
     @GetMapping("/{id}")
     public User get(@PathVariable Long id) {
         return repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "User not found"));
+
     }
 }
 
