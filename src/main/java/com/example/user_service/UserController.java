@@ -14,7 +14,10 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody @Valid User user) {
+    public User create(@RequestBody request req) {
+        User user  = new User();
+        user.setName(req.getName());
+        user.setEmail(req.getEmail());
         return repo.save(user);
     }
 
